@@ -18,10 +18,12 @@ return {
     },
     "windwp/nvim-ts-autotag",
     "norcalli/nvim-colorizer.lua",
-    "ishan9299/nvim-solarized-lua"
+    "ishan9299/nvim-solarized-lua",
+    "audibleblink/hackthebox.vim"
   },
   theme = {
-    name = "rose-pine",
+    name = "catppuccin",
+    catppuccin_flavour = "mocha"
   },
   formatters = {
     -- gofmt = {},
@@ -80,7 +82,7 @@ return {
       git_ignored = false,
     },
     view = {
-      width = 40,
+      width = 30,
     },
   },
   telescope = {},
@@ -89,5 +91,53 @@ return {
       require("better-vim.custom")
     end,
   },
-  unload_plugins = { "noice" },
+  noise = {
+    notify = {
+      enabled = false,
+    }
+  },
+  --  unload_plugins = { "noice" },
+  lualine = {
+    sections = {
+      a = { "mode" },
+      b = { "branch" },
+      c = {
+        {
+          "filename",
+          file_status = true,
+          path = 1 -- 0 just filename, 1 = relative path, 2 = absolute path
+        },
+      },
+      x = {
+        {
+          "diagnostics",
+          sources = { "nvim_diagnostic" },
+          symbols = {
+            error = " ",
+            warn = " ",
+            info = " ",
+            hint = " ",
+          }
+        },
+        "encoding",
+        "filetype"
+      },
+      y = { "progress" },
+      z = { "location" }
+    },
+    inactive_sections = {
+      a = {},
+      b = {},
+      c = {
+        {
+          "filename",
+          file_status = true, -- displays file status (readonly status, modified status)
+          path = 1            -- 0 = just filename, 1 = relative path, 2 = absolute path
+        }
+      },
+      x = { "location" },
+      z = {},
+      y = {},
+    }
+  },
 }
