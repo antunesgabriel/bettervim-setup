@@ -77,9 +77,17 @@ return {
   },
   nvim_tree = {
     filters = {
-      dotfiles = false,
-      custom = { '^.git$' },
-      git_ignored = false,
+      -- dotfiles = false,
+      -- custom = {
+      --   ".git",
+      -- },
+      -- git_ignored = false
+      exclude = {
+        ".gitignore",
+        ".env",
+        ".github",
+        ".dockerignore"
+      }
     },
     view = {
       width = 30,
@@ -96,7 +104,12 @@ return {
       enabled = false,
     }
   },
-  --  unload_plugins = { "noice" },
+  mappings = {
+    tabs = function(tab)
+      return "<leader>h" .. tab
+    end,
+  },
+  unload_plugins = { "noice" },
   lualine = {
     sections = {
       a = { "mode" },
